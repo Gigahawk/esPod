@@ -87,12 +87,14 @@ Some features may be more complicated to enable in firmware, but the hardware sh
 ### Architecture
 
 - Main CPU: ESP32, probably S2/S3 for native USB support
+    - OMGS3 could be used to simplify layout, but this will prevent doing complete power off for deep sleep, maybe just use it to inspire component selection
 - No dedicated coprocessor for standby, main CPU is completely off for deep sleep
     - We can use the clickwheel processor BTN1 to wake up/reenable power to main CPU, CPU can latch power on until it's time to go back to standby
 - Interchangeable internal DAC/Amp?
     - Presumably we can put the DAC on a stamp with all I2S signals and analog outputs routed to the edge
 - Probably a chip antenna, maybe near the USB port?
     - The metal rear of the case is probably not that great for reception, but existing projects don't seem to have too much trouble with it. That said the built in trace antenna on the RPi Zero is apparently quite fancy and uses some licensed tech that we can't use.
+    - Will probably fit on the underside of the board under the screen, that way it will be pointing towards the plastic portion of the case? hopefully won't interfere with audio path, should be ok since that section is past the amp.
 
 ### Misc
 
