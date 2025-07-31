@@ -58,7 +58,6 @@ Some features may be more complicated to enable in firmware, but the hardware sh
     - TV out support?
         - Might be better to support audio input idk
     - USB data transfer
-        - With no native USB support, may have to mux the SD card with a USB to SD adapter or something, possibly also add a hub for a built in programmer?
     - Screen
     - Clickwheel
     - Clickwheel clicker
@@ -97,6 +96,20 @@ Some features may be more complicated to enable in firmware, but the hardware sh
 - Probably a chip antenna, maybe near the USB port?
     - The metal rear of the case is probably not that great for reception, but existing projects don't seem to have too much trouble with it. That said the built in trace antenna on the RPi Zero is apparently quite fancy and uses some licensed tech that we can't use.
     - Will probably fit on the underside of the board under the screen, that way it will be pointing towards the plastic portion of the case? hopefully won't interfere with audio path, should be ok since that section is past the amp.
+- USB data transfer
+    - With no native USB support, may have to mux the SD card with a USB to SD adapter or something, possibly also add a hub for a built in programmer?
+    - USB Hubs
+        - CoreChips [SL2.1A](https://lcsc.com/product-detail/USB-HUB-Controllers_CoreChips-SL2-1A_C192893.html)/[SL2.1S](https://lcsc.com/product-detail/USB-HUB-Controllers_CoreChips-SL2-1s_C2684433.html) are super cheep from LCSC, chinese only datasheet but seems simple enough to implement
+        - [USB2422](https://www.digikey.ca/en/products/detail/microchip-technology/USB2422-MJ/4080182) is somewhat pricy and can't be direct powered from 5V
+    - SD reader (Turns out adapter chips are somewhat hard to come by)
+        - There's the [MAX14502](https://www.digikey.com/en/products/detail/analog-devices-inc-maxim-integrated/MAX14502AETL/2061945) which integrates a built in bypass mode which would eliminate the need for a hub but is either not available or super expensive
+        - The [GL823K](https://lcsc.com/product-detail/USB-Converters_GENESYS-GL823K-HCY04_C284879.html?s_z=h_GL823) is available only from LCSC
+        - The [USB2241I](https://www.digikey.ca/en/products/detail/microchip-technology/USB2241I-AEZG-06/3873145?s=N4IgTCBcDaIKoGUBCYwBYCMBJEBdAvkA) is a little pricy and can't be direct powered from 5V
+    - Serial adapter
+        - [CH9102](https://lcsc.com/product-detail/USB-Converters_WCH-CH9102F_C2858418.html) somewhat pricy but seems to support 5V power
+        - [CP2105](https://www.digikey.com/en/products/detail/silicon-labs/CP2105-F01-GM/2486179) quite expensive and seems overkill
+        - [FT230X](https://www.mouser.ca/ProductDetail/FTDI/FT230XS-R?qs=Gp1Yz1mis3XyCLeYOseSng%3D%3D) Somewhat pricy but also comes in convenient SSOP and great docs
+
 
 ### Misc
 
