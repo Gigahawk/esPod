@@ -20,7 +20,7 @@
 - [My own piPod](https://github.com/Gigahawk/pipod_hw)
     - The general concept of an iPod board replacement has been rattling in my head for a really long time, this was my first (unfinished/untested attempt)
     - Closely matches the original iPod board shape
-    - Uses a STP240320_0200B display with this [https://github.com/Gigahawk/STP240320_0200B_b2b](board to board adapter) and a 3D printed shell to mount securely into housing with good alignment
+    - Uses a STP240320_0200B display with this [board to board adapter](https://github.com/Gigahawk/STP240320_0200B_b2b) and a 3D printed shell to mount securely into housing with good alignment
     - DAC choices limited due to RPi's inability to generate I2S MCLK
     - Uses a coprocessor to translate clickwheel SPI to I2C and handle standby
         - In theory it might have been possible to elimitate this with the BTN1 method described below, but some work would have been needed to get the Pi to act as a SPI slave on SPI1/2 (SPI1 is dedicated to driving the display)
@@ -58,12 +58,13 @@ Some features may be more complicated to enable in firmware, but the hardware sh
     - TV out support?
         - Might be better to support audio input idk
     - USB data transfer
+        - With no native USB support, may have to mux the SD card with a USB to SD adapter or something, possibly also add a hub for a built in programmer?
     - Screen
     - Clickwheel
     - Clickwheel clicker
     - Original battery support
 3. USB-C
-    - Host mode support for USB DACs, maybe USB-C analog audio out
+    - ~~Host mode support for USB DACs, maybe USB-C analog audio out~~ Original ESP32 does not support USB
 4. WiFi file sync
     - Using a MCU means no syncing via Syncthing or even easy connectivity to a private cloud with Tailscale etc.
     - Closest we can probably do is an rsync compatible client and an IP/URL to try to pull updates from
@@ -71,14 +72,14 @@ Some features may be more complicated to enable in firmware, but the hardware sh
 6. Passthrough mode
     - Sources:
         - Bluetooth (iPod acts as Bluetooth speaker)
-        - USB (iPod acts as audio device)
-        - USB (iPod acts as analog audio device)
+        - ~~USB (iPod acts as audio device)~~ Not supported on base ESP32
+        - ~~USB (iPod acts as analog audio device)~~ Not supported on base ESP32
         - Headphone jack (ADC connected to headphone jack?)
         - WiFi (internet radio/streaming?)
         - Local storage
     - Sinks:
         - Bluetooth (iPod streams to bluetooth speaker)
-        - USB (iPod sends audio to USB audio device)
+        - ~~USB (iPod sends audio to USB audio device)~~ Not supported on base ESP32
         - Headphone jack
 7. SD bulk storage
     - May be housed internally
@@ -86,8 +87,9 @@ Some features may be more complicated to enable in firmware, but the hardware sh
 
 ### Architecture
 
-- Main CPU: ESP32, probably S2/S3 for native USB support
-    - OMGS3 could be used to simplify layout, but this will prevent doing complete power off for deep sleep, maybe just use it to inspire component selection
+- Main CPU: ESP32, ~~probably S2/S3 for native USB support~~ must use a regular ESP32 for BT classic (audio support)
+    - ~~OMGS3 could be used to simplify layout, but this will prevent doing complete power off for deep sleep, maybe just use it to inspire component selection~~
+    - Since we will probably be forking the Tangara firmware as a start might as well follow their design as much as we can
 - No dedicated coprocessor for standby, main CPU is completely off for deep sleep
     - We can use the clickwheel processor BTN1 to wake up/reenable power to main CPU, CPU can latch power on until it's time to go back to standby
 - Interchangeable internal DAC/Amp?
