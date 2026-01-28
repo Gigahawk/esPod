@@ -114,3 +114,17 @@ Some features may be more complicated to enable in firmware, but the hardware sh
 ### Misc
 
 - No permanent case mods
+
+## Notes
+
+### Case Screws
+
+The mainboard is held in with 5x screws with the following characteristics:
+- Drive: Torx T6
+- Head diameter: ~3.2mm
+- Head thickness: ~1.35mm
+- Thread length: ~4mm
+- Thread outer dia: ~1.53mm
+- Thread pitch: ~2.72mm measured across 5 thread peaks
+    - Roughly 0.68mm between peaks
+
