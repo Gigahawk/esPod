@@ -128,3 +128,23 @@ The mainboard is held in with 5x screws with the following characteristics:
 - Thread pitch: ~2.72mm measured across 5 thread peaks
     - Roughly 0.68mm between peaks
 
+Possible matches:
+- https://www.mcmaster.com/99397A012/
+  - T5 head
+  - Outer dia 1.59mm
+  - Thread pitch 0.6mm
+  - Tri-lobe cross section, original appears to be circular
+  - Head dia 2.95mm
+- https://www.mcmaster.com/96817a113/
+  - T5 head
+  - Outer dia 1.6mm
+  - Thread pitch 0.64mm
+  - Head dia 2.75mm
+- https://www.mcmaster.com/96817A152/
+  - T6 head
+  - Outer dia 1.8mm, might be too big?
+  - Thread pitch 0.71mm
+  - Head dia 3.05mm
+
+- 
+
